@@ -30,7 +30,6 @@ categorical_columns:
 
 drop_columns: _id
 
-# for data transformation
 num_features:
   - Age
   - Vintage

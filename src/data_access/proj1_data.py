@@ -8,14 +8,9 @@ from src.constants import DATABASE_NAME
 from src.exception import VehicleException
 
 class Proj1Data:
-    """
-    A class to export MongoDB records as a pandas DataFrame.
-    """
 
     def __init__(self) -> None:
-        """
-        Initializes the MongoDB client connection.
-        """
+        
         try:
             self.mongo_client = MongoDBClient(database_name=DATABASE_NAME)
         except Exception as e:
@@ -23,13 +18,11 @@ class Proj1Data:
 
     def export_collection_as_dataframe(self, collection_name: str, database_name: Optional[str] = None) -> pd.DataFrame:
         try:
-            # Access specified collection from the default or specified database
             if database_name is None:
                 collection = self.mongo_client.database[collection_name]
             else:
                 collection = self.mongo_client[database_name][collection_name]
 
-            # Convert collection data to DataFrame and preprocess
             print("Fetching data from mongoDB")
             df = pd.DataFrame(list(collection.find()))
             print(f"Data fecthed with len: {len(df)}")

@@ -20,10 +20,7 @@ class VehicleData:
                 Vehicle_Age_gt_2_Years,
                 Vehicle_Damage_Yes
                 ):
-        """
-        Vehicle Data constructor
-        Input: all features of the trained model for prediction
-        """
+        
         try:
             self.Gender = Gender
             self.Age = Age
@@ -41,9 +38,7 @@ class VehicleData:
             raise VehicleException(e, sys) from e
 
     def get_vehicle_input_data_frame(self)-> DataFrame:
-        """
-        This function returns a DataFrame from USvisaData class input
-        """
+        
         try:
             
             vehicle_input_dict = self.get_vehicle_data_as_dict()
@@ -54,9 +49,7 @@ class VehicleData:
 
 
     def get_vehicle_data_as_dict(self):
-        """
-        This function returns a dictionary from VehicleData class input
-        """
+        
         logging.info("Entered get_usvisa_data_as_dict method as VehicleData class")
 
         try:
@@ -83,19 +76,14 @@ class VehicleData:
 
 class VehicleDataClassifier:
     def __init__(self,prediction_pipeline_config: VehiclePredictorConfig = VehiclePredictorConfig(),) -> None:
-        """
-        :param prediction_pipeline_config: Configuration for prediction the value
-        """
+       
         try:
             self.prediction_pipeline_config = prediction_pipeline_config
         except Exception as e:
             raise VehicleException(e, sys)
 
     def predict(self, dataframe) -> str:
-        """
-        This is the method of VehicleDataClassifier
-        Returns: Prediction in string format
-        """
+        
         try:
             logging.info("Entered predict method of VehicleDataClassifier class")
             model = Proj1Estimator(
